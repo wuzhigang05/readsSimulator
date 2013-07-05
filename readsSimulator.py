@@ -86,7 +86,8 @@ if __name__ == '__main__':
   e = sys.stderr
   parser= argparse.ArgumentParser(
       description="Given frequency of each nucleotide (A, T, C, G), " +
-      "generate specific number of simulatation DNA reads. The length distribution of the simulated reads "
+      "generate specific number (customizable via --num) of simulatation DNA reads. " +
+      " The length distribution of the simulated reads "
       + "will be consistent with that of the specified (training) input file. " +
       "By default frequency for each nucleotide is set to that of model plant -- Arabidopsis.")
   parser.add_argument("--A", help="frequency of A [.32]", 

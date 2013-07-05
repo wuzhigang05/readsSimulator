@@ -19,7 +19,7 @@ Requirements
 
   3. package: [scipy] (http://www.scipy.org/)
 
-  4. package: [pandas]] (http://pandas.pydata.org/)
+  4. package: [pandas] (http://pandas.pydata.org/)
 
 
 Example Usage
@@ -28,7 +28,7 @@ To display help
 
     python readsSimulator.py -h
 
- Below command will generate 1000 readsto STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
+ Below command will generate 10000 readsto STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
  of 'C' and 'G' is 0.18. The mean and stdev of the length of all generated simulation reads will be exactly 
  the same as input file -- test.fa.
 
