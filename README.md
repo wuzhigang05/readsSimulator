@@ -1,9 +1,10 @@
 DNA sequence/reads simulator
 ================================
-Reads simulation is often needed in bioformatics. For instance, you want to do benchmark of several 
-short read aligners and you will need some high throuput sequencing reads to test them out. However, 
-you don't have practical data on hand. In this case, you can use this reads simulator to generate 
-some reads for you. There are definitely many other applications but I won't enumerate them here. 
+Reads simulation is often needed in bioformatics for tool performance benchmark or tool test. It generally takes long time 
+and a lot of money to get the real data. For instance, if you want to do benchmark of several 
+short read aligners. To test them out, you will need 1,000,000 high throuput sequencing reads, which should 
+have a median length of 40 nt and 30% of A,T and 70% of C,G. This program can generate simulated reads, which exactly follows 
+given nucleotide composition and length distribution for you. 
 
 Features
 =========
@@ -28,7 +29,7 @@ To display help
 
     python readsSimulator.py -h
 
- Below command will generate 10000 readsto STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
+ Below command will generate 10000 reads to STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
  of 'C' and 'G' is 0.18. The mean and stdev of the length of all generated simulation reads will be exactly 
  the same as input file -- test.fa.
 
