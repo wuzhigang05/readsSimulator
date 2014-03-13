@@ -1,40 +1,47 @@
 DNA sequence/reads simulator
 ================================
-Reads simulation is often needed in bioformatics for tool performance benchmark or tool test. It generally takes long time 
-and a lot of money to get the real data. For instance, if you want to do benchmark of several 
-short read aligners. To test them out, you will need 1,000,000 high throuput sequencing reads, which should 
-have a median length of 40 nt and 30% of A,T and 70% of C,G. This program can generate simulated reads, which exactly follows 
-given nucleotide composition and length distribution for you. 
+Significant amount of reads are often needed in bioformatics for tool benchmark 
+or tool test. Though the cost of sequencing has greatly reduced due to recent 
+advancement in sequencing technology, it still costs several thousands of dollars 
+per sequencer run, without mentioning the time cost, which usually is a few days, 
+to generate real sequencing reads. Here the sequencers are including all current 
+dominant NGS sequencers (Illumina, SOLiD and 454). That is expensive and it's a 
+overkill for purpose like benchmarking tools. With the application of statistics 
+and computer science, we can generate simulated reads, which have the same 
+quality as real data. That's the motivation of this project -- generate simulated 
+reads with features customizable through argument at any scale (coverage).
+
+For instance, you may need 1,000,000 high throuput sequencing reads, which should 
+have a median length of 72 nt (or any median length you would expect from your 
+sequencer) and the reads should possess 30% of A,T and 70% of C,G to reflect the 
+actual AT and GC content in a your favorate specie (such as rice). That is what 
+this program can do.
 
 Features
 =========
-This program will generate any number of reads, which uses exact nucleotide frequency given 
-by the user. Additionally, the length of the simulated reads is consistent with the input (training)
-data
+This program will generate any number of reads with the exact nucleotide frequency 
+given by the user. Additionally, the length of the simulated reads is consistent with the input (training) data if given. 
 
 Requirements
 =============
-  1. Python version > 2.7
-  
-  2. package: [numpy] (http://www.numpy.org/)
-
-  3. package: [scipy] (http://www.scipy.org/)
-
-  4. package: [pandas] (http://pandas.pydata.org/)
+  ** Python version > 2.7                         **
+  ** package: [numpy] (http://www.numpy.org/)     **
+  ** package: [scipy] (http://www.scipy.org/)     **
+  ** package: [pandas] (http://pandas.pydata.org/)**
 
 
 Example Usage
 =============
 To display help
-
+```python
     python readsSimulator.py -h
-
+```
  Below command will generate 10000 reads to STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
  of 'C' and 'G' is 0.18. The mean and stdev of the length of all generated simulation reads will be exactly 
  the same as input file -- test.fa.
-
+```python
     python readsSimulator.py test.fa
-
+```
 Send Bugs/Commnents to
 ======================
 Zhigang Wu (zhigang.wu@email.ucr.edu)

@@ -8,7 +8,9 @@ from scipy import stats
 import re
 import time
 
-# readfq function is gitted from heng li's repository https://github.com/lh3/readfq/blob/master/readfq.py
+# readfq function is gitted from heng li's repository 
+# https://github.com/lh3/readfq/blob/master/readfq.py
+
 def readfq(fp): # this is a generator function
   e.write("start parsing file ...\n")
   t = time.time()
@@ -62,8 +64,8 @@ def lengthGenerator(file, number):
   ee = np.around(ee, decimals=2)
   e.write("Here is length DataFrame\n")
   e.write(ee.to_string())
-
-  custm = stats.rv_discrete(name="custm", values=(ee.index.tolist(), ee.ix[:, 'percentage']))
+  custm = stats.rv_discrete(name="custm", 
+          values=(ee.index.tolist(), ee.ix[:, 'percentage']))
   return custm.rvs(size=number)
 
 def read_generator(A=None, C=None, G=None, T= None, length=None):
@@ -85,11 +87,13 @@ if __name__ == '__main__':
   o = sys.stdout
   e = sys.stderr
   parser= argparse.ArgumentParser(
-      description="Given frequency of each nucleotide (A, T, C, G), " +
-      "generate specific number (customizable via --num) of simulatation DNA reads. " +
-      " The length distribution of the simulated reads "
-      + "will be consistent with that of the specified (training) input file. " +
-      "By default frequency for each nucleotide is set to that of model plant -- Arabidopsis.")
+      description="""
+      Given frequency of each nucleotide (A, T, C, G), 
+      generate specific number (customizable via --num) of simulatation DNA reads. 
+      The length distribution of the simulated reads will be consistent with that 
+      of the specified (training) input file. By default frequency for each 
+      nucleotide is set to that of model plant -- Arabidopsis.
+      """)
   parser.add_argument("--A", help="frequency of A [.32]", 
       default = 0.32, type=float)
   parser.add_argument("--C", help="frequency of C [.18]", 
@@ -98,11 +102,17 @@ if __name__ == '__main__':
       default = 0.18, type=float)
   parser.add_argument("--T", help="frequency of T [.32]", 
       default = 0.32, type=float)
-  parser.add_argument('file', help="the reads file, from which we get the length distribution, " +
+  parser.add_argument('file', 
+          help="the reads file, from which we get the length distribution, " +
       "which will be used in our simulation")
-  parser.add_argument('--num', default = 10000, type=int, help="number of simulation reads you " +
-      "want to generate")
+  parser.add_argument('-n', '--num', default = 10000, type=int, 
+          help="number of simulation reads you want to generate")
+  parser.add_argument('-c', '--coverage', default = 3, type=int, 
+          help="the coverage you want to generate regarding the inputfile")
+
   args = parser.parse_args()
+  for name, seq, i in readfq(getHandle(args.file)):
+      print name, len(seq), i
   reads_generator(args)
 
 
