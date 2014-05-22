@@ -9,10 +9,11 @@ dominant NGS sequencers (Illumina, SOLiD and 454). That is expensive and it's a
 overkill for purpose like benchmarking tools. With the application of statistics 
 and computer science, we can generate simulated reads, which have the same 
 quality as real data. That's the motivation of this project -- generate simulated 
-reads with features customizable through argument at any scale (coverage).
+reads with features customizable through arguments.
 
-For instance, you may need 1,000,000 high throuput sequencing reads, which should 
-have a median length of 72 nt (or any median length you would expect from your 
+For instance, to benchmark several SNP callers, you may need 1,000,000 high throughput 
+sequencing reads, which should have a median length of 72 nt (or any median length you 
+would expect from your 
 sequencer) and the reads should possess 30% of A,T and 70% of C,G to reflect the 
 actual AT and GC content in a your favorate specie (such as rice). That is what 
 this program can do.
@@ -24,23 +25,23 @@ given by the user. Additionally, the length of the simulated reads is consistent
 
 Requirements
 =============
-  ** Python version > 2.7                         **
-  ** package: [numpy] (http://www.numpy.org/)     **
-  ** package: [scipy] (http://www.scipy.org/)     **
-  ** package: [pandas] (http://pandas.pydata.org/)**
+  * Python version > 2.7                         
+  * package: [numpy] (http://www.numpy.org/)     
+  * package: [scipy] (http://www.scipy.org/)     
+  * package: [pandas] (http://pandas.pydata.org/)
 
 
 Example Usage
 =============
 To display help
 ```python
-    python readsSimulator.py -h
+python readsSimulator.py -h
 ```
  Below command will generate 10000 reads to STDOUT. By default, the frequency of 'A' and 'T' is 0.32 and that 
  of 'C' and 'G' is 0.18. The mean and stdev of the length of all generated simulation reads will be exactly 
  the same as input file -- test.fa.
 ```python
-    python readsSimulator.py test.fa
+python readsSimulator.py test.fa
 ```
 Send Bugs/Commnents to
 ======================
